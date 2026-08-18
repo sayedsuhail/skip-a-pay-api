@@ -92,6 +92,34 @@ const sendConfirmationEmail = async (name, email, user) => {
   }
 }
 
+// send test email
+const sendTestEmail = async (name = "SAP Email Server", email) => {
+  try {
+    sendSmtpEmail = {
+      to: [
+        {
+          email: email,
+          name: name,
+        },
+      ],
+      sender: {
+        name: "SkipAPay",
+        email: "support@cpdfcu-sap.com",
+      },
+      subject: "Confirmation of SAP email server!",
+      htmlContent: `
+      Dear <strong>${name}</strong>,
+      <br />
+      <pre>  If you received this in your inbox, its mean sap email server is working just fine.*</pre>
+      <br />
+      `,
+    }
+    sendEmail()
+  } catch (e) {
+    console.log(e)
+  }
+}
+
 // send email
 const sendEmail = async () => {
   try {
@@ -107,4 +135,5 @@ const sendEmail = async () => {
 
 module.exports = {
   sendConfirmationEmail,
+  sendTestEmail,
 }

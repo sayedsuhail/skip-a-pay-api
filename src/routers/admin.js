@@ -3,10 +3,25 @@ const Admin = require("../models/admin")
 const auth = require("../middleware/auth")
 const router = new express.Router()
 const bcrypt = require("bcryptjs")
+const { sendTestEmail } = require("../emails/account")
 
 // root for testing app
 router.get("/", async (req, res) => {
   res.send("App is running...")
+})
+
+// send test email
+router.post("/testemail", async (req, res) => {
+  try {
+    // send test email
+    sendTestEmail(req.body.name, req.body.email)
+
+    res.send({
+      status: `Email sent to ${req.body.email}, please check your inbox`,
+    })
+  } catch (e) {
+    res.status(400).send({ error: e.message })
+  }
 })
 
 // create admin
