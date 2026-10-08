@@ -79,7 +79,7 @@ const sendConfirmationEmail = async (name, email, user) => {
 
       <div align="center">
         <img
-          src="https://www.cpdfcu.com/wp-content/uploads/2023/08/2Logos.png"
+          src="https://www.nationalpolicefcu.com/assets/img/national-police-fcu-logo.svg"
           alt="Logo"
           style="max-width: 100%;"
         />
